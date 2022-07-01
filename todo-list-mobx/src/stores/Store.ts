@@ -1,8 +1,11 @@
+import React,{createContext,useState,useEffect} from 'react'
 import { observable, action, reaction, makeAutoObservable } from "mobx";
 import { v4 as uuidv4 } from 'uuid';
 import { Item } from "../models/Item";
+import { toJS } from 'mobx';
 
 class ItemStore {
+  
   constructor() {
     makeAutoObservable(this)
     reaction(
@@ -11,12 +14,15 @@ class ItemStore {
     );
   }
 
+
   @observable
    items: Item[] = [
     { id: uuidv4(), name: "Node js" },
     { id: uuidv4(), name: "Express js, Koa js" },
     { id: uuidv4(), name: "Nest js"},
   ];
+  @observable setItem : any
+
 
   @action
    addItems = (item: Item) => {
@@ -28,6 +34,19 @@ class ItemStore {
     this.items = this.items.filter(item => item.id !== id)
   }
 
+  @action
+  updateItem = (id: string) => {
+   const findEditItem=toJS(this.items.find(item=>item.id===id));
+   this.setItem=findEditItem
+  }
+ 
+ @action
+  editItem = (name:string, id:string) => {
+    const newEditItem=this.items.map(item=>(item.id===id?{name, id}:item));
+    this.items=newEditItem
+    this.setItem=null
+  }
+  
 }
 
 export default ItemStore;

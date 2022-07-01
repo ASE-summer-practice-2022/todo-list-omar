@@ -7,7 +7,7 @@ export interface ToDoLIstProps {
 }
 const TodoList = (props: ToDoLIstProps) => {
   const itemStore = props.ItemStore;
-  const { items, removeItem } = itemStore;
+  const { items, removeItem, updateItem } = itemStore;
 
   return (
     <div className="row d-flex justify-content-center">
@@ -19,11 +19,18 @@ const TodoList = (props: ToDoLIstProps) => {
                 <div className="col-md-6 text-start">{item.name} </div>
                 <div className="col-md-6 text-end">
                   <button
+                    className="btn btn-primary btn-sm mx-2"
+                    onClick={(e) => updateItem(item.id!)}
+                  >
+                    Edit
+                  </button>                  
+                  <button
                     className="btn btn-danger btn-sm"
                     onClick={(e) => removeItem(item.id!)}
                   >
                     Delete
                   </button>
+
                 </div>
               </div>
             </li>
