@@ -1,8 +1,6 @@
-import React,{createContext,useState,useEffect} from 'react'
 import { observable, action, reaction, makeAutoObservable } from "mobx";
 import { v4 as uuidv4 } from 'uuid';
 import { Item } from "../models/Item";
-import { toJS } from 'mobx';
 
 class ItemStore {
   
@@ -23,7 +21,6 @@ class ItemStore {
   ];
   @observable setItem : any
 
-
   @action
    addItems = (item: Item) => {
     this.items= [...this.items,{id: uuidv4(), name:item.name }];
@@ -35,14 +32,14 @@ class ItemStore {
   }
 
   @action
-  updateItem = (id: string) => {
-   const findEditItem=toJS(this.items.find(item=>item.id===id));
+  updateItem =async (id: string) => {
+   const findEditItem=this.items.find(item=>item.id===id);
    this.setItem=findEditItem
   }
  
  @action
-  editItem = (name:string, id:string) => {
-    const newEditItem=this.items.map(item=>(item.id===id?{name, id}:item));
+  editItem = (id:string, name:string) => {
+    const newEditItem=this.items.map(item=>(item.id===id?{id, name}:item));
     this.items=newEditItem
     this.setItem=null
   }

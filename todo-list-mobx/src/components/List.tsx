@@ -1,17 +1,11 @@
-import React from "react";
 import ItemStore from "../stores/Store";
-import { observer } from "mobx-react-lite";
+import { inject, observer } from "mobx-react";
 
-export interface ToDoLIstProps {
-  ItemStore: ItemStore
-}
-const TodoList = (props: ToDoLIstProps) => {
-  const itemStore = props.ItemStore;
-  const { items, removeItem, updateItem } = itemStore;
-
+const TodoList = ({ItemStore}:{ItemStore:ItemStore}) => {
+  const { items, removeItem, updateItem } = ItemStore;
   return (
     <div className="row d-flex justify-content-center">
-      <div className="col-md-8 ">
+      <div >
         <ul className="list-group">
           {items.map((item) => (
             <li key={item.id} className="list-group-item list-group-item-secondary ">
@@ -20,13 +14,13 @@ const TodoList = (props: ToDoLIstProps) => {
                 <div className="col-md-6 text-end">
                   <button
                     className="btn btn-primary btn-sm mx-2"
-                    onClick={(e) => updateItem(item.id!)}
+                    onClick={() => updateItem(item.id!)}
                   >
                     Edit
                   </button>                  
                   <button
                     className="btn btn-danger btn-sm"
-                    onClick={(e) => removeItem(item.id!)}
+                    onClick={() => removeItem(item.id!)}
                   >
                     Delete
                   </button>
@@ -42,4 +36,4 @@ const TodoList = (props: ToDoLIstProps) => {
   );
 };
 
-export default observer(TodoList);
+export default inject('ItemStore')(observer(TodoList));
