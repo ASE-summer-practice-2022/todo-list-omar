@@ -1,35 +1,37 @@
 import ItemStore from "../stores/Store";
 import { inject, observer } from "mobx-react";
+import {Delete, Edit} from '@mui/icons-material';
 
-const TodoList = ({ItemStore}:{ItemStore:ItemStore}) => {
+import { Button, List, ListItem, ListItemText } from "@mui/material";
+
+
+const TodoList = ({ ItemStore }: { ItemStore: ItemStore }) => {
   const { items, removeItem, updateItem } = ItemStore;
   return (
     <div className="row d-flex justify-content-center">
       <div >
-        <ul className="list-group">
+        <List >
           {items.map((item) => (
-            <li key={item.id} className="list-group-item list-group-item-secondary ">
-              <div className="row d-flex justify-content-between">
-                <div className="col-md-6 text-start">{item.name} </div>
-                <div className="col-md-6 text-end">
-                  <button
-                    className="btn btn-primary btn-sm mx-2"
-                    onClick={() => updateItem(item.id!)}
-                  >
-                    Edit
-                  </button>                  
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={() => removeItem(item.id!)}
-                  >
+            <ListItem sx={{ bgcolor: 'text.disabled', my: 1, px:2}}
+              key={item.id}
+              disableGutters
+              secondaryAction={
+                <>
+                  <Button  onClick={() => removeItem(item.id!)} variant="outlined" size="small" color="error" startIcon={<Delete />}>
                     Delete
-                  </button>
+                  </Button>
+                  <Button sx={{ mx: 2 }} onClick={() => updateItem(item.id!)} variant="outlined" size="small" color="secondary" endIcon={<Edit />}>
+                    Edit
+                  </Button>
+                </>
 
-                </div>
-              </div>
-            </li>
+              }
+            >
+              <ListItemText primary={item.name} />
+            </ListItem>
           ))}
-        </ul>
+        </List>
+        
       </div>
 
     </div>

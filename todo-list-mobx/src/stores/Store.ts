@@ -12,14 +12,13 @@ class ItemStore {
     );
   }
 
-
   @observable
    items: Item[] = [
     { id: uuidv4(), name: "Node js" },
     { id: uuidv4(), name: "Express js, Koa js" },
     { id: uuidv4(), name: "Nest js"},
   ];
-  @observable setItem : any
+  @observable activeItem : any
 
   @action
    addItems = (item: Item) => {
@@ -34,14 +33,14 @@ class ItemStore {
   @action
   updateItem =async (id: string) => {
    const findEditItem=this.items.find(item=>item.id===id);
-   this.setItem=findEditItem
+   this.activeItem=findEditItem
   }
  
  @action
   editItem = (id:string, name:string) => {
     const newEditItem=this.items.map(item=>(item.id===id?{id, name}:item));
     this.items=newEditItem
-    this.setItem=null
+    this.activeItem=null
   }
   
 }
