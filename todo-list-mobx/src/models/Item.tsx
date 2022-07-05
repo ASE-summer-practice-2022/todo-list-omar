@@ -1,4 +1,9 @@
+import { v4 as uuidv4 } from 'uuid';
 export class Item {
-    id?: string;
-    name?: string;
+    id?:string;
+    name?:string
+    constructor(id:string,name:string){
+      this.id=uuidv4()
+      this.name=name
+    }
   }

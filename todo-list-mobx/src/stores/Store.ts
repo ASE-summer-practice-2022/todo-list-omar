@@ -22,7 +22,7 @@ class ItemStore {
 
   @action
    addItems = (item: Item) => {
-    this.items= [...this.items,{id: uuidv4(), name:item.name }];
+    this.items= [...this.items,{name:item.name}];
   };
 
   @action

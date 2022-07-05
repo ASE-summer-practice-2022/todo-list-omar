@@ -38,7 +38,7 @@ function Form({ ItemStore }: { ItemStore: ItemStore }) {
         <InputLabel htmlFor="my-input">Items</InputLabel>
         <Input onChange={(e) => onChangeHandler(e)}  required value={addName} id="my-input" aria-describedby="my-helper-text" />
         <FormHelperText id="my-helper-text">About backend and frontend.</FormHelperText>
-        <Button variant="contained" size="small" color="primary" > {!activeItem?"Add Task":"Edit Task"}</Button>
+        <Button variant="contained" size="small" color="primary" > {!activeItem?"Add Item":"Edit Item"}</Button>
       </FormControl>
 
     </div>
