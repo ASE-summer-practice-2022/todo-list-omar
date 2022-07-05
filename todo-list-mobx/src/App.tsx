@@ -3,7 +3,7 @@ import Form from "./components/Form";
 import List from "./components/List";
 import ItemStore from "./stores/Store";
 import Typography from '@mui/material/Typography';
-import './styles/app.scss'
+import './styles/app.module.scss'
 
 const App = () => {
   const itemStore= new ItemStore()
