@@ -1,0 +1,11 @@
+@import './colors/colors.module.scss';
+@import './fonts/fonts.module.scss';
+
+.container{
+    background-color:$background-app;
+    padding: 10px;
+}
+
+.headings{
+    font-family: 'Poppins', sans-serif !important;
+}

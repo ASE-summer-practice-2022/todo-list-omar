@@ -17,10 +17,10 @@ const TodoList = ({ ItemStore }: { ItemStore: ItemStore }) => {
               disableGutters
               secondaryAction={
                 <>
-                  <Button  onClick={() => removeItem(item.id!)} variant="outlined" size="small" color="error" startIcon={<Delete />}>
+                  <Button  onClick={() => removeItem(item.id!)} variant="contained" size="small" color="error" startIcon={<Delete />}>
                     Delete
                   </Button>
-                  <Button sx={{ mx: 2 }} onClick={() => updateItem(item.id!)} variant="outlined" size="small" color="secondary" endIcon={<Edit />}>
+                  <Button sx={{ mx: 2 }} onClick={() => updateItem(item.id!)} variant="contained" size="small" color="secondary" endIcon={<Edit />}>
                     Edit
                   </Button>
                 </>
