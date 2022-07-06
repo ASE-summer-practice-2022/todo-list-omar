@@ -9,7 +9,7 @@ class ItemStore {
     reaction(
       () => this.items,
       _ => console.log(this.items.length)
-    );
+    )
   }
 
   @observable
@@ -23,7 +23,7 @@ class ItemStore {
   @action
   addItems = (item: Item) => {
     this.items = [...this.items, { id: uuidv4(), name: item.name }];
-  };
+  }
 
   @action
   removeItem = (id: string) => {

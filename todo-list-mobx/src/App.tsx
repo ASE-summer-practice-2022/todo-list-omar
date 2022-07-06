@@ -1,3 +1,4 @@
+import React  from 'react';
 import { Provider } from 'mobx-react';
 import ItemStore from './stores/Store'
 import Form from "./components/Form";
