@@ -17,8 +17,7 @@
       "plugin:import/errors",
       "plugin:import/warnings",
       "plugin:import/typescript",
-      "eslint-config-prettier",
-      "airbnb"
+      "eslint-config-prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {

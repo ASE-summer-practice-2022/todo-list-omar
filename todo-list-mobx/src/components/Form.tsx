@@ -17,7 +17,7 @@ const Form = inject('ItemStore')(observer((props: any) => {
       return false
     }
     if (!activeItem) {
-      addItems(addName);
+      addItems( addName );
       setAddName("");
     }
     else {
