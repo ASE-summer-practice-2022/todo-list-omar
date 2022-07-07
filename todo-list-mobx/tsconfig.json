@@ -16,7 +16,9 @@
       "jsx": "react-jsx",
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
+      "plugins": [{ "name": "typescript-plugin-css-modules" }]  
     },
+    "include": ["./src/**/*.tsx", "./src/**/*.ts", "./Globals/*.ts"],
     "exclude": [
       "node_modules",
       "build",
