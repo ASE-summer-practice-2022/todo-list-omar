@@ -4,7 +4,6 @@ import {Item} from "../models/Item";
 
 
 class ItemStore {
-
   constructor() {
     makeAutoObservable(this)
     reaction(
@@ -14,22 +13,13 @@ class ItemStore {
   }
 
   @observable
-  items: Item[] = [
-    { id: uuidv4(), name: "Node js" },
-    { id: uuidv4(), name: "Express js, Koa js" },
-    { id: uuidv4(), name: "Nest js" },
-  ];
+  items: Item[] = [new Item("Javascript"), new Item("Typescript")];
   @observable activeItem: any
 
   @action
-  addItems = (item: Item) => {
-    this.items = [...this.items, { id: uuidv4(), name: item.name }];
+  addItems = (name:string) => {
+    this.items = [...this.items, new Item(name) ];
   }
-
-  // @action
-  // addItems = (name:string) => {
-  //   this.items = [...this.items, new Item(name) ];
-  // }
 
   @action
   removeItem = (id: string) => {

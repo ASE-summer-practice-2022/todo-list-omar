@@ -7,13 +7,3 @@ export class Item {
       this.name=name
     }
   }
-
-// import { observable} from 'mobx';
-// export class Item {
-//     @observable name?;
-//     @observable id?;
-//     constructor(name:string){
-//         this.name = name;
-//         this.id = uuidv4();
-//     }
-// }
