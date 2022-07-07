@@ -1,6 +1,7 @@
 import { observable, action, reaction, makeAutoObservable } from "mobx";
 import { v4 as uuidv4 } from 'uuid';
-import { Item } from "../models/Item";
+import {Item} from "../models/Item";
+
 
 class ItemStore {
 
@@ -24,6 +25,11 @@ class ItemStore {
   addItems = (item: Item) => {
     this.items = [...this.items, { id: uuidv4(), name: item.name }];
   }
+
+  // @action
+  // addItems = (name:string) => {
+  //   this.items = [...this.items, new Item(name) ];
+  // }
 
   @action
   removeItem = (id: string) => {
